@@ -23,7 +23,7 @@ const UpdateUser = () => {
 
         const fetchData = async () => {
 
-            const response = await axios.get(`http://localhost:8000/api/v2/user-auth/get-user-by-id/${idd}`)
+            const response = await axios.get(`/api/v2/user-auth/get-user-by-id/${idd}`)
             setFormData(response.data.output)  // this "data" comes from browser & watch in browser consol after consoling (Array ta nia aste hobe)
             //console.log(response.data.output)
         }
@@ -47,7 +47,7 @@ const UpdateUser = () => {
 
         try {
 
-            const response = await axios.put(`http://localhost:8000/api/v2/user-auth/update-user/${idd}`, formData);
+            const response = await axios.put(`/api/v2/user-auth/update-user/${idd}`, formData);
 
             console.log(response.data); // Handle success response
             // toast package use for show pop success notification // this message comes form backend
