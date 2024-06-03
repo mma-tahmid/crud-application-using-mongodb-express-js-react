@@ -38,7 +38,7 @@ exports.CreateUser = async (req, res) => {
 
             let result = await newUser.save();
 
-            res.status(200).json({ status: "Success", data: result })
+            res.status(200).json({ msg: "Success", output: result })
             //res.send({ Success: "User Created Successfully" })
 
         }
@@ -46,7 +46,7 @@ exports.CreateUser = async (req, res) => {
     }
 
     catch (error) {
-        res.status(200).json({ status: "Fail", data: error })
+        res.status(200).json({ msg: "Fail", output: error })
 
     }
 }
@@ -61,11 +61,11 @@ exports.UpdateUser = async (req, res) => {
         const id = req.params.useruniqueid
 
         let UpdateUser = await usersModel.findByIdAndUpdate(id, { $set: req.body }, { new: true })
-        res.status(200).json({ status: "Success", data: UpdateUser })
+        res.status(200).json({ msg: "Success", output: UpdateUser })
     }
 
     catch (error) {
-        res.status(200).json({ status: "Fail", data: error })
+        res.status(200).json({ msg: "Fail", output: error })
     }
 
 }
@@ -82,11 +82,11 @@ exports.GetUserById = async (req, res) => {
 
         let result = await usersModel.findById(id)
 
-        res.status(200).json({ status: "Success", data: result })
+        res.status(200).json({ msg: "Success", output: result })
     }
 
     catch (error) {
-        res.status(200).json({ status: "Fail", data: error })
+        res.status(200).json({ msg: "Fail", output: error })
     }
 
 }
@@ -102,13 +102,13 @@ exports.ShowAlluser = async (req, res) => {
 
         let result = await usersModel.find()
 
-        res.status(200).json({ status: "Success", data: result }) // data: result, this result show data in postman
+        res.status(200).json({ msg: "Success", output: result }) // data: result, this result show data in postman
         // res.status(200).json(result)
 
     }
 
     catch (error) {
-        res.status(200).json({ status: "Fail", data: error })
+        res.status(200).json({ msg: "Fail", output: error })
     }
 
 }
@@ -126,12 +126,13 @@ exports.DeleteUser = async (req, res) => {
         //Don't Return anything only delete User (that why deleteuser is not use)
 
         let deleteUser = await usersModel.findByIdAndDelete(id)
-        res.status(200).json("User has been Deleted")
+        res.status(200).json({msg:"User Deleted successfully"})
+        
 
     }
 
     catch (error) {
-        res.status(200).json({ status: "Fail", data: error })
+        res.status(200).json({ msg: "Fail", output: error })
     }
 }
 

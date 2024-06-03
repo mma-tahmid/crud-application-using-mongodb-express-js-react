@@ -37,11 +37,11 @@ const AddUser = () => {
 
         try {
 
-            const response = await axios.post('http://localhost:8000/api/v2/user-auth/create-user', formData);
+            const response = await axios.post('/api/v2/user-auth/create-user', formData);
 
             console.log(response.data); // Handle success response
             // toast package use for show pop success notification // this message comes form backend
-            toast.success(response.data.status, { position: "top-right" })
+            toast.success(response.data.msg, { position: "top-right" }) //.data comes from browser
             navigatePage("/")
 
             // after submit the form  input field will be empty
